@@ -53,10 +53,13 @@ export class SecretKeeper {
   }
 
   revealSecrets(value: NodeValue, secrets: string[]) {
-    const revealed = secrets.reduce((acc, secret) => {
-      acc[secret] = this.secrets[secret]?.value || "";
-      return acc;
-    }, {} as Record<string, string>);
+    const revealed = secrets.reduce(
+      (acc, secret) => {
+        acc[secret] = this.secrets[secret]?.value || "";
+        return acc;
+      },
+      {} as Record<string, string>
+    );
     return secretReplacer(value, revealed);
   }
 
