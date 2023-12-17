@@ -161,8 +161,8 @@ export class HistoryEntry extends HTMLElement {
       <div id="container" class="${type}">
         <details ${type === "output" ? "open" : ""}>
           <summary>${summary} <span id="id">${idOutput}</span> <span id="elapsed-time">${this.#formatTime(
-      elapsedTime
-    )}<span></summary>
+            elapsedTime
+          )}<span></summary>
           <div><pre>${dataOutput}</pre></div>
         </details>
       </div>

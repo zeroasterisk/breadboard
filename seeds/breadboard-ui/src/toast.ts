@@ -7,7 +7,11 @@
 import { ToastType } from "./events.js";
 
 export class Toast extends HTMLElement {
-  constructor(public message: string, public type: ToastType, timeout = 8000) {
+  constructor(
+    public message: string,
+    public type: ToastType,
+    timeout = 8000
+  ) {
     super();
     const root = this.attachShadow({ mode: "open" });
 

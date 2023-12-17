@@ -449,9 +449,7 @@ export class Diagram extends HTMLElement {
 
     const innerGraphic = svgImage.querySelector("g");
     assertSVGElement(innerGraphic);
-    innerGraphic.style.transformOrigin = `${this.#transformOrigin.x} ${
-      this.#transformOrigin.y
-    }`;
+    innerGraphic.style.transformOrigin = `${this.#transformOrigin.x} ${this.#transformOrigin.y}`;
     innerGraphic.style.transform = `scale(${this.#scale}, ${this.#scale})`;
 
     const ratio = Math.min(
