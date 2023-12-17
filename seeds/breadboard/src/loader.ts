@@ -42,8 +42,8 @@ export const resolveURL = (
   const result: ResolverResult = path
     ? { type: "file", location: path, href }
     : href
-    ? { type: "fetch", location: hrefWithoutHash, href }
-    : { type: "unknown", location: "", href };
+      ? { type: "fetch", location: hrefWithoutHash, href }
+      : { type: "unknown", location: "", href };
   results.push(result);
   return !hash;
 };

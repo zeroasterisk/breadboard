@@ -193,8 +193,8 @@ export class BoardRunner implements BreadboardRunner {
           shouldInvokeHandler
             ? callHandler(handler, inputs, newContext)
             : beforehandlerDetail.outputs instanceof Promise
-            ? beforehandlerDetail.outputs
-            : Promise.resolve(beforehandlerDetail.outputs)
+              ? beforehandlerDetail.outputs
+              : Promise.resolve(beforehandlerDetail.outputs)
         ) as Promise<OutputValues>;
 
         outputsPromise.then((outputs) => {
