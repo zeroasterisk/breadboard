@@ -7,14 +7,14 @@
  */
 
 import create from "base-create";
-import * as fs from 'fs';
-import * as path from 'path'
-import { fileURLToPath } from 'url';
+import * as fs from "fs";
+import * as path from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-type Asset = { path: string, contents: string };
+type Asset = { path: string; contents: string };
 
 const generateAssetList = (dir: string, base: string): Asset[] => {
   const files = fs.readdirSync(dir);
@@ -25,7 +25,7 @@ const generateAssetList = (dir: string, base: string): Asset[] => {
     if (fs.statSync(filePath).isFile()) {
       assetList.push({
         path: filePath.substring(base.length + 1), // file is relative to dir.
-        contents: fs.readFileSync(filePath, { encoding: "utf-8" })
+        contents: fs.readFileSync(filePath, { encoding: "utf-8" }),
       });
     }
     // recursively add file paths to asset list if it is a directory
@@ -39,7 +39,11 @@ const generateAssetList = (dir: string, base: string): Asset[] => {
 
 const { name } = create({
   // optional deps to install
-  dependencies: ["@google-labs/breadboard", "@google-labs/llm-starter", "@google-labs/core-kit"], // We can only include deps that have been published.
+  dependencies: [
+    "@google-labs/breadboard",
+    "@google-labs/llm-starter",
+    "@google-labs/core-kit",
+  ], // We can only include deps that have been published.
   // optional dev deps to install
   devDependencies: [
     "@ava/typescript",
@@ -59,26 +63,29 @@ const { name } = create({
     types: "./dist/index.d.ts",
     // these will merge with scripts like `test` from `npm init`
     scripts: {
-      "build": "FORCE_COLOR=1 tsc --b",
-      "test": "FORCE_COLOR=1 ava"
+      build: "FORCE_COLOR=1 tsc --b",
+      test: "FORCE_COLOR=1 ava",
     },
     files: ["dist/src"],
     ava: {
-      files: [
-        "tests/**/*.ts"
-      ],
+      files: ["tests/**/*.ts"],
       typescript: {
         compile: false,
         rewritePaths: {
-          "./": "dist/"
-        }
+          "./": "dist/",
+        },
       },
-      workerThreads: false
+      workerThreads: false,
     },
   },
-  files: generateAssetList(path.resolve(__dirname, "../assets"), path.resolve(__dirname, "../assets")),
+  files: generateAssetList(
+    path.resolve(__dirname, "../assets"),
+    path.resolve(__dirname, "../assets")
+  ),
   skipGitignore: false,
   skipReadme: true,
 });
 
-console.log(`Created ${name}!. Enter the project directory and run: \`npm run build\` and \`npm run test\`.`);
+console.log(
+  `Created ${name}!. Enter the project directory and run: \`npm run build\` and \`npm run test\`.`
+);

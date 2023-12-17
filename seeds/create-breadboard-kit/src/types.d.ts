@@ -1,1 +1,1 @@
-declare module 'base-create';
+declare module "base-create";

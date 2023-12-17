@@ -332,18 +332,18 @@ export class Label {
       (this.confidentiality === undefined
         ? "UNDETERMINED"
         : this.confidentiality.above.length === 0 // === TOP
-        ? "PRIVATE"
-        : this.confidentiality.below.length === 0 // === BOTTOM
-        ? "PUBLIC"
-        : this.confidentiality.name) +
+          ? "PRIVATE"
+          : this.confidentiality.below.length === 0 // === BOTTOM
+            ? "PUBLIC"
+            : this.confidentiality.name) +
       ", " +
       (this.integrity === undefined
         ? "UNDETERMINED"
         : this.integrity.above.length === 0 // === TOP
-        ? "UNTRUSTED"
-        : this.integrity.below.length === 0 // === BOTTOM
-        ? "TRUSTED"
-        : this.integrity.name) +
+          ? "UNTRUSTED"
+          : this.integrity.below.length === 0 // === BOTTOM
+            ? "TRUSTED"
+            : this.integrity.name) +
       "]"
     );
   }

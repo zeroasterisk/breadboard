@@ -24,12 +24,16 @@ const kit = board.addKit(Starter);
 const core = board.addKit(Core);
 
 const prologuePrompt = kit
-  .promptTemplate(await maker.prompt("order-agent-prologue", "orderAgentPrologue"))
+  .promptTemplate(
+    await maker.prompt("order-agent-prologue", "orderAgentPrologue")
+  )
   .wire("<-tools.", core.passthrough(await maker.part("tools", "json")));
 
 const schema = core.passthrough(await maker.jsonPart("order-schema"));
 
-const epiloguePrompt = kit.promptTemplate(await maker.prompt("order-agent-epilogue", "orderAgentEpilogue"));
+const epiloguePrompt = kit.promptTemplate(
+  await maker.prompt("order-agent-epilogue", "orderAgentEpilogue")
+);
 
 const customerMemory = core.append({ $id: "customerMemory" });
 const agentMemory = core.append({ $id: "agentMemory" });
